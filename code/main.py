@@ -3,7 +3,7 @@ from settings import *
 from support import *
 from pytmx.util_pygame import load_pygame
 
-from sprites import MonsterPatchSprite, Sprite, AnimatedSprite
+from sprites import CollidableSprite, MonsterPatchSprite, Sprite, AnimatedSprite, BorderSprite
 from entities import Player, Character
 from groups import AllSprites
 
@@ -20,6 +20,7 @@ class Game:
 
         # groups
         self.all_sprites = AllSprites()
+        self.collision_sprites = pygame.sprite.Group()
 
         self.import_assets()
         self.setup(self.tmx_maps['world'], 'house')
@@ -69,8 +70,13 @@ class Game:
                 Sprite((obj.x, obj.y),
                        obj.image, self.all_sprites, WORLD_LAYERS['top'])
             else:
-                Sprite((obj.x, obj.y),
-                       obj.image, self.all_sprites)
+                CollidableSprite((obj.x, obj.y),
+                                 obj.image, (self.all_sprites, self.collision_sprites))
+
+        # collision objects
+        for obj in tmx_map.get_layer_by_name('Collisions'):
+            BorderSprite((obj.x, obj.y), pygame.Surface(
+                (obj.width, obj.height)), (self.collision_sprites))
 
         # grass patches
         for obj in tmx_map.get_layer_by_name('Monsters'):
@@ -85,11 +91,12 @@ class Game:
                         pos=(obj.x, obj.y),
                         frames=self.overworld_frames['characters']['player'],
                         groups=self.all_sprites,
-                        facing_direction=obj.direction)
+                        facing_direction=obj.direction,
+                        collision_sprites=self.collision_sprites)
             else:
                 Character(pos=(obj.x, obj.y),
                           frames=self.overworld_frames['characters'][obj.graphic],
-                          groups=self.all_sprites,
+                          groups=(self.all_sprites, self.collision_sprites),
                           facing_direction=obj.direction)
 
     def run(self):

@@ -8,6 +8,19 @@ class Sprite(pygame.sprite.Sprite):
         self.rect = self.image.get_frect(topleft=pos)
         self.z = z
         self.y_sort = self.rect.centery
+        self.hitbox = self.rect.copy()
+
+
+class BorderSprite(Sprite):
+    def __init__(self, pos, surf, groups):
+        super().__init__(pos, surf, groups)
+        self.hitbox = self.rect.copy()
+
+
+class CollidableSprite(Sprite):
+    def __init__(self, pos, surf, groups, z=WORLD_LAYERS['main']):
+        super().__init__(pos, surf, groups, z)
+        self.hitbox = self.rect.inflate(0, -self.rect.height * 0.6)
 
 
 class MonsterPatchSprite(Sprite):
