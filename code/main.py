@@ -1,4 +1,6 @@
 from os.path import join
+from dialog import DialogTree
+from game_data import *
 from settings import *
 from support import *
 from pytmx.util_pygame import load_pygame
@@ -21,6 +23,7 @@ class Game:
         # groups
         self.all_sprites = AllSprites()
         self.collision_sprites = pygame.sprite.Group()
+        self.character_sprites = pygame.sprite.Group()
 
         self.import_assets()
         self.setup(self.tmx_maps['world'], 'house')
@@ -37,6 +40,10 @@ class Game:
             'water': import_folder('graphics', 'tilesets', 'water'),
             'coast': coast_importer(24, 12, 'graphics', 'tilesets', 'coast'),
             'characters': all_character_import('graphics', 'characters')
+        }
+
+        self.fonts = {
+            'dialog': pygame.font.Font(join('graphics', 'fonts', 'PixeloidSans.ttf'), 30)
         }
 
     def setup(self, tmx_map, player_start_pos):
@@ -96,8 +103,24 @@ class Game:
             else:
                 Character(pos=(obj.x, obj.y),
                           frames=self.overworld_frames['characters'][obj.graphic],
-                          groups=(self.all_sprites, self.collision_sprites),
-                          facing_direction=obj.direction)
+                          groups=(self.all_sprites,
+                                  self.collision_sprites,
+                                  self.character_sprites),
+                          facing_direction=obj.direction,
+                          character_data=TRAINER_DATA[obj.character_id])
+
+    def input(self):
+        keys = pygame.key.get_just_pressed()
+        if keys[pygame.K_SPACE]:
+            for character in self.character_sprites:
+                if check_connections(100, self.player, character):
+                    self.player.block()
+                    character.change_facing_direction(self.player.rect.center)
+                    self.create_dialog(character)
+
+    def create_dialog(self, character):
+        DialogTree(character, self.player,
+                   self.all_sprites, self.fonts['dialog'])
 
     def run(self):
         while True:
@@ -107,6 +130,8 @@ class Game:
                     pygame.quit()
                     exit()
 
+            # game logic
+            self.input()
             self.all_sprites.update(dt)
             self.display_surface.fill('black')
             self.all_sprites.draw(self.player.rect.center)

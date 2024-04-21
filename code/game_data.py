@@ -173,7 +173,7 @@ TRAINER_DATA = {
         'monsters': {0: ('Friolera', 25), 1: ('Gulfin', 20), 2: ('Draem', 24), 3: ('Finiette', 30)},
         'dialog': {
             'default': ['This place feels kinda warm...', 'fight!'],
-            'defeated': ['Congratultion!']},
+            'defeated': ['Congratulations!']},
         'directions': ['down'],
         'look_around': True,
         'defeated': False,
@@ -183,7 +183,7 @@ TRAINER_DATA = {
         'monsters': {0: ('Cindrill', 15), 1: ('Jacana', 20), 2: ('Draem', 24), 3: ('Atrox', 30)},
         'dialog': {
             'default': ['This place feels kinda warm...', 'fight!'],
-            'defeated': ['Congratultion!']},
+            'defeated': ['Congratulations!']},
         'directions': ['right'],
         'look_around': True,
         'defeated': False,
@@ -193,7 +193,7 @@ TRAINER_DATA = {
         'monsters': {0: ('Cindrill', 15), 1: ('Jacana', 20), 2: ('Draem', 24), 3: ('Atrox', 30)},
         'dialog': {
             'default': ['This place feels kinda warm...', 'fight!'],
-            'defeated': ['Congratultion!']},
+            'defeated': ['Congratulations!']},
         'directions': ['right', 'left'],
         'look_around': False,
         'defeated': False,
@@ -203,7 +203,7 @@ TRAINER_DATA = {
         'monsters': {0: ('Cindrill', 15), 1: ('Jacana', 20), 2: ('Draem', 24), 3: ('Atrox', 30)},
         'dialog': {
             'default': ['This place feels kinda warm...', 'fight!'],
-            'defeated': ['Congratultion!']},
+            'defeated': ['Congratulations!']},
         'directions': ['right', 'left'],
         'look_around': True,
         'defeated': False,
@@ -213,7 +213,7 @@ TRAINER_DATA = {
         'monsters': {0: ('Cindrill', 15), 1: ('Jacana', 20), 2: ('Draem', 24), 3: ('Atrox', 30)},
         'dialog': {
             'default': ['This place feels kinda warm...', 'fight!'],
-            'defeated': ['Congratultion!']},
+            'defeated': ['Congratulations!']},
         'directions': ['up', 'right'],
         'look_around': True,
         'defeated': False,
@@ -223,7 +223,7 @@ TRAINER_DATA = {
         'monsters': {0: ('Cindrill', 15), 1: ('Jacana', 20), 2: ('Draem', 24), 3: ('Atrox', 30)},
         'dialog': {
             'default': ['This place feels kinda warm...', 'fight!'],
-            'defeated': ['Congratultion!']},
+            'defeated': ['Congratulations!']},
         'directions': ['left'],
         'look_around': True,
         'defeated': False,
@@ -233,7 +233,7 @@ TRAINER_DATA = {
         'monsters': {0: ('Cindrill', 15), 1: ('Jacana', 20), 2: ('Draem', 24), 3: ('Atrox', 30)},
         'dialog': {
             'default': ['This place feels kinda warm...', 'fight!'],
-            'defeated': ['Congratultion!']},
+            'defeated': ['Congratulations!']},
         'directions': ['right'],
         'look_around': True,
         'defeated': False,
@@ -243,7 +243,7 @@ TRAINER_DATA = {
         'monsters': {0: ('Cindrill', 15), 1: ('Jacana', 20), 2: ('Draem', 24), 3: ('Atrox', 30)},
         'dialog': {
             'default': ['Time to bring the heat', 'fight!'],
-            'defeated': ['Congratultion!']},
+            'defeated': ['Congratulations!']},
         'directions': ['down'],
         'look_around': False,
         'defeated': False,
