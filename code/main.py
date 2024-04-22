@@ -109,7 +109,11 @@ class Game:
                                   self.collision_sprites,
                                   self.character_sprites),
                           facing_direction=obj.direction,
-                          character_data=TRAINER_DATA[obj.character_id])
+                          character_data=TRAINER_DATA[obj.character_id],
+                          player=self.player,
+                          create_dialog=self.create_dialog,
+                          collision_sprites=self.collision_sprites,
+                          radius=obj.radius)
 
     def input(self):
         if not self.dialog_tree:
@@ -121,6 +125,7 @@ class Game:
                         character.change_facing_direction(
                             self.player.rect.center)
                         self.create_dialog(character)
+                        character.can_rotate = False
 
     def create_dialog(self, character):
         if not self.dialog_tree:
@@ -143,7 +148,7 @@ class Game:
             self.input()
             self.all_sprites.update(dt)
             self.display_surface.fill('black')
-            self.all_sprites.draw(self.player.rect.center)
+            self.all_sprites.draw(self.player)
             pygame.display.update()
 
             # overlays
