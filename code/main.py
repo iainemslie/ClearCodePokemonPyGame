@@ -90,11 +90,10 @@ class Game:
             else:
                 CollidableSprite((obj.x, obj.y),
                                  obj.image, (self.all_sprites, self.collision_sprites))
-
-        # transition objects
+            # transition objects
         for obj in tmx_map.get_layer_by_name('Transition'):
             TransitionSprite((obj.x, obj.y), (obj.width, obj.height),
-                             (obj.pos, obj.target), self.transition_sprites)
+                             (obj.properties['target'], obj.properties['pos']), self.transition_sprites)
 
         # collision objects
         for obj in tmx_map.get_layer_by_name('Collisions'):
