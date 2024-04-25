@@ -58,6 +58,10 @@ class Game:
             self.player_monsters, self.fonts, self.monster_frames)
         self.index_open = False
 
+        # window icon
+        icon_surf = self.monster_frames['icons']['Atrox']
+        pygame.display.set_icon(icon_surf)
+
     def import_assets(self):
         self.tmx_maps = tmx_importer('data', 'maps')
 
@@ -69,6 +73,7 @@ class Game:
 
         self.monster_frames = {
             'icons': import_folder_dict('graphics', 'icons'),
+            'monsters': monster_importer(4, 2, 'graphics', 'monsters')
         }
 
         self.fonts = {
