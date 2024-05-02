@@ -56,7 +56,7 @@ class Entity(pygame.sprite.Sprite):
 
 
 class Character(Entity):
-    def __init__(self, pos, frames, groups, facing_direction, character_data, player, create_dialog, collision_sprites, radius, nurse):
+    def __init__(self, pos, frames, groups, facing_direction, character_data, player, create_dialog, collision_sprites, radius, nurse, notice_sound):
         super().__init__(pos, frames, groups, facing_direction)
         self.character_data = character_data
         self.player = player
@@ -81,6 +81,8 @@ class Character(Entity):
             'notice': Timer(500, func=self.start_move)
         }
 
+        self.notice_sound = notice_sound
+
     def get_dialog(self):
         return self.character_data['dialog'][f'{'defeated'}' if self.character_data['defeated'] else 'default']
 
@@ -92,6 +94,7 @@ class Character(Entity):
             self.can_rotate = False
             self.has_noticed = True
             self.player.noticed = True
+            self.notice_sound.play()
 
     def has_los(self):
         if vector(self.rect.center).distance_to(self.player.rect.center) < self.radius:
