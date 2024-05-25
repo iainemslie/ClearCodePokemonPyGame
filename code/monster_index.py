@@ -189,7 +189,7 @@ class MonsterIndex:
         draw_bar(self.display_surface, energybar_rect, monster.health,
                  monster.get_stat('max_energy'), COLORS['blue'], COLORS['black'], 2)
         ep_text = self.fonts['regular'].render(
-            f'EP: {int(monster.energy)}/{int(monster.get_stat('max_energy'))}', False, COLORS['white'])
+            f"EP: {int(monster.energy)}/{int(monster.get_stat('max_energy'))}", False, COLORS['white'])
         ep_rect = ep_text.get_frect(
             midleft=energybar_rect.midleft + vector(10, 0))
         self.display_surface.blit(ep_text, ep_rect)
