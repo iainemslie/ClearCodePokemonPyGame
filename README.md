@@ -7,5 +7,11 @@
 ```sh
 $ python -m venv pokeenv
 $ source ./pokeenv/Scripts/activate
-$ pip install requirements.txt
+$ pip install -r requirements.txt
+```
+
+## Run the game
+
+```sh
+$ python code/main.py
 ```
