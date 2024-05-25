@@ -179,7 +179,7 @@ class MonsterIndex:
         draw_bar(self.display_surface, healthbar_rect, monster.health,
                  monster.get_stat('max_health'), COLORS['red'], COLORS['black'], 2)
         hp_text = self.fonts['regular'].render(
-            f'HP: {int(monster.health)}/{int(monster.get_stat('max_health'))}', False, COLORS['white'])
+            f"HP: {int(monster.health)}/{int(monster.get_stat('max_health'))}", False, COLORS['white'])
         hp_rect = hp_text.get_frect(
             midleft=healthbar_rect.midleft + vector(10, 0))
         self.display_surface.blit(hp_text, hp_rect)
