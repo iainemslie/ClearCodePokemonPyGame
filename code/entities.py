@@ -84,7 +84,7 @@ class Character(Entity):
         self.notice_sound = notice_sound
 
     def get_dialog(self):
-        return self.character_data['dialog'][f'{'defeated'}' if self.character_data['defeated'] else 'default']
+        return self.character_data['dialog'][f"{'defeated'}" if self.character_data['defeated'] else 'default']
 
     def raycast(self):
         if check_connections(self.radius, self, self.player) and self.has_los() and not self.has_moved and not self.has_noticed:
